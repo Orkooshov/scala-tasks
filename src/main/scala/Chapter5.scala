@@ -94,9 +94,23 @@ class Chapter5 {
   }
 
   // task 7
+  class Person2(name: String){
+    def firstName: String = name.split(" ")(0)
+    def lastName: String = name.split(" ")(1)
+  }
+
   // task 8
+  class Car(val manufacturer: String, val model: String,
+            val manufactureYear: Int = -1, var stateNumber: String = ""){
+  }
+
   // task 9
+  // ../java/Car
+
   // task 10
-  // todo
+  class Employee(val name: String, var salary: Double) {
+    def this() { this("John Q. Public", 0.0) }
+  }
+  class Employee3(val name: String = "John Q. Public", var salary: Double = 0)
 }
 
