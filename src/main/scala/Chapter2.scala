@@ -1,12 +1,10 @@
-import scala.io.StdIn
-
 class Chapter2 {
   def task1(x: Double):Int ={
     if (x > 0) 1
     else if (x < 0) -1
     else 0
   }
-  def task4() ={
+  def task4():Unit ={
     for (i <- 10 to 0 by -1){
       println(i)
     }
@@ -37,6 +35,10 @@ class Chapter2 {
     else s.charAt(0).toInt * n
   }
   def task10(x: Double, n: Int): Double ={
+    // todo
     0
+  }
+  def task11(): Unit ={
+    // todo
   }
 }

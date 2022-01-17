@@ -1,5 +1,6 @@
 import scala.collection.mutable
 import java.awt.datatransfer._
+import scala.jdk.CollectionConverters._
 
 class Chapter3 {
   def task1(num: Int):Array[Int] ={
@@ -9,7 +10,7 @@ class Chapter3 {
     }
     arr
   }
-  def task2(arr: Array[Int]) ={
+  def task2(arr: Array[Int]): Array[Int] ={
     for (i <- 1 until arr.length by 2){
       val t = arr(i)
       arr(i) = arr(i-1)
@@ -18,9 +19,15 @@ class Chapter3 {
     arr
   }
   def task3(arr: Array[Int]): Array[Int] ={
-    // todo
-    var tmp = 0
-    val res = for (i <- arr.indices if (i % 2 == 1)) yield i
+    var flag = true
+    val res = for (i <- arr.indices)
+      yield if (flag) {
+        flag = !flag
+        if (arr.length != i+1) arr(i+1) else arr(i)
+      } else {
+        flag = !flag
+        arr(i-1)
+      }
     res.toArray
   }
   def task4(arr: Array[Int]): Array[Int] ={
@@ -45,9 +52,9 @@ class Chapter3 {
 //    for (i <- buff.indices){
 //      if (buff(i) < 0) tmp += i
 //    }
-    val tmp = (for (i <- buff.indices if (buff(i) < 0)) yield i).toBuffer
+    val tmp = (for (i <- buff.indices if buff(i) < 0) yield i).toBuffer
     tmp.remove(0)
-    tmp.reverse.foreach(buff.remove(_))
+    tmp.reverse.foreach(buff.remove)
     buff
   }
   def task10(): Array[String] ={
@@ -57,8 +64,9 @@ class Chapter3 {
     americanTimezones
   }
   def task11(): Unit ={
-    // todo
-//    val flavors = SystemFlavorMap.getDefaultFlavorMap().
-//      asInstanceOf[SystemFlavorMap].getNativesForFlavors(DataFlavor.imageFlavor)
+    val flavors = SystemFlavorMap.getDefaultFlavorMap.
+      asInstanceOf[SystemFlavorMap]
+    val imgFlavor = flavors.getNativesForFlavor(DataFlavor.imageFlavor).asScala
+    println(imgFlavor.mkString(" "))
   }
 }

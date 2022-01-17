@@ -1,55 +1,64 @@
+import scala.beans.BeanProperty
+
 class Chapter5 {
   // task 1
   class Counter {
     private var value = 0
-    def increment() {
+
+    def increment():Unit ={
       if (value == Int.MaxValue)
         throw new Exception("Counter can't be greater than Int.MaxValue")
       value += 1
     }
-    def current() = value
+
+    def current(): Int = value
   }
 
   // task 2
-  class BankAccount{
+  class BankAccount {
     private var _balance: Double = 0
-    def balance() = _balance
 
-    def deposit(sum: Double): Unit ={
+    def balance(): Double = _balance
+
+    def deposit(sum: Double): Unit = {
       _balance += sum
     }
-    def withdraw(sum: Double): Unit ={
+
+    def withdraw(sum: Double): Unit = {
       _balance -= sum
     }
   }
 
   // task 3
-  class Time(private var hrs: Int, private var min: Int){
-    if (!checkHours(hrs)){
+  class Time(private var hrs: Int, private var min: Int) {
+    if (!checkHours(hrs)) {
       throw new Exception("hrs must be in between 0 and 24")
     }
-    if (!checkMinutes(min)){
+    if (!checkMinutes(min)) {
       throw new Exception("min must be in between 0 and 60")
     }
 
-    def checkHours(hours: Int): Boolean ={
+    def checkHours(hours: Int): Boolean = {
       hours >= 0 && hours < 24
     }
-    def checkMinutes(minutes: Int): Boolean ={
+
+    def checkMinutes(minutes: Int): Boolean = {
       minutes >= 0 && minutes < 60
     }
 
-    def hours = hrs
-    def minutes = min
+    def hours: Int = hrs
 
-    def hours_=(value: Int): Unit ={
+    def minutes: Int = min
+
+    def hours_=(value: Int): Unit = {
       hrs = value
     }
-    def minutes_=(value: Int): Unit ={
+
+    def minutes_=(value: Int): Unit = {
       min = value
     }
 
-    def before(other: Time): Boolean ={
+    def before(other: Time): Boolean = {
       if (hours < other.hours) true
       else if (hours == other.hours && minutes < other.minutes) true
       else false
@@ -57,15 +66,37 @@ class Chapter5 {
   }
 
   // task 4
-  // todo
+  class Time2(hrs: Int, min: Int) {
+    private val timeInMinutes = hrs * 60 - 1 + min
+
+    def hours: Int = timeInMinutes / 60
+    def minutes: Int = {
+      val tmp = timeInMinutes % 60 + 1
+      if (tmp != 60) tmp else 0
+    }
+
+    def before(other: Time2): Boolean = timeInMinutes < other.timeInMinutes
+  }
 
   // task 5
-  // todo
+  class Student{
+    @BeanProperty var name: String = "Hello"
+  }
 
   // task 6
-  // todo
+  class Person(initialAge: Int) {
+
+    private var _age: Int = if (initialAge < 0) 0 else initialAge
+    def age: Int = _age
+    def age_=(value: Int): Unit ={
+      if (value > _age) _age = value
+    }
+  }
 
   // task 7
-
+  // task 8
+  // task 9
+  // task 10
+  // todo
 }
 
