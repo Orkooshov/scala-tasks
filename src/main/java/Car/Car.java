@@ -1,3 +1,5 @@
+package Car;
+
 public class Car {
     public String getManufacturer() {
         return manufacturer;
