@@ -41,7 +41,13 @@ class Chapter12 {
   }
 
   // task 7
-  // todo
+  def task7(): Unit ={
+    val pairs = (1 to 10) zip (11 to 20)
+    println(pairs.map(adjustToPair(_ + _)(_)))
+  }
+  def adjustToPair(func: (Int, Int) => Int)(tuple: (Int, Int)): Int ={
+    func(tuple._1, tuple._2)
+  }
 
   // task 8
   def task8(): Boolean ={
@@ -51,8 +57,7 @@ class Chapter12 {
   }
 
   // task 9
-  // todo
-  def corresponds[A](seq1: Seq[A], seq2: Seq[A], p: (A, A) => Boolean): Boolean ={
+  def corresponds(seq1: Seq[String], seq2: Seq[String], p: (String, String) => Boolean): Boolean ={
     if (seq1.length != seq2.length) return false
 
     for ((a, b) <- seq1 zip seq2){
@@ -62,6 +67,9 @@ class Chapter12 {
     }
     true
   }
+
   // task 10
-  // todo
+  def unless(condition: => Boolean)(block: => Unit): Unit = {
+    if (!condition) block
+  }
 }

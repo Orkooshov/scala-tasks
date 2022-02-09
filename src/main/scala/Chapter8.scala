@@ -117,8 +117,6 @@ class Chapter8 {
     }
   }
 
-  // task 8
-
   // task 9
   class Creature {
     def range: Int = 10
@@ -134,7 +132,14 @@ class Chapter8 {
     println(f"Ant#env.length (after): ${env.length}")
   }
 
-  // task 10
-  // task 11
-  // todo
+}
+
+// task 11
+class Point(val n: Long) extends AnyVal {
+  override def toString: String = f"$n"
+}
+object Point{
+  def apply(x: Int, y: Int): Point ={
+    new Point(x * y)
+  }
 }
