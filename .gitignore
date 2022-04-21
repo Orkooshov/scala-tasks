@@ -6,8 +6,11 @@ target/
 dist/*
 lib_managed/
 src_managed/
-project/boot/
-project/plugins/project/
+project/
 .history
 .cache
 .lib/
+
+
+*.class
+*.log
