@@ -1,4 +1,13 @@
 /.bsp/
 /.idea/
 /null/
-/target/
+target/
+
+dist/*
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+.history
+.cache
+.lib/
